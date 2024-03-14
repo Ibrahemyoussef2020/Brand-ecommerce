@@ -3,7 +3,7 @@ import { ProductProps } from "@/types";
 
 interface ShowProductsProps{
   products:string,
-  setProducts:(product:[]|ProductProps[])=>void,
+  setProducts:(product:ProductProps[])=>void,
 } 
 
 export const fetchProduct = async (
@@ -11,7 +11,7 @@ export const fetchProduct = async (
   setProduct:(product:{}|ProductProps)=>void,
   productId:string)=>{
     const isCategorySelected = products === '' || !products ? false : true ;
-    const res = await fetch(`http://localhost:5000/${isCategorySelected ? `${products}/${productId}` : ''}`, {
+    const res = await fetch(`https://brand-ecommerce-data.onrender.com/${isCategorySelected ? `${products}/${productId}` : ''}`, {
         cache: "no-cache",
       })
       .then(res => {
@@ -27,7 +27,7 @@ export const fetchProduct = async (
 
 export const showProducts = async (products:string,setProducts:(product:[]|ProductProps[])=>void)=>{
   const isCategorySelected = products === '' || !products ? false : true ;
-  const res = await fetch(`http://localhost:5000/${isCategorySelected ? `${products}` : ''}`, {
+  const res = await fetch(`https://brand-ecommerce-data.onrender.com/${isCategorySelected ? `${products}` : ''}`, {
       cache: "no-cache",
     })
     .then(res =>{
@@ -45,7 +45,7 @@ export const showProducts = async (products:string,setProducts:(product:[]|Produ
 export const fetchProductsToServer = async (products:string)=>{
 
   const isCategorySelected = products === '' || !products ? false : true ;
-  const res = await fetch(`http://localhost:5000/${isCategorySelected ? `${products}` : ''}`, {
+  const res = await fetch(`https://brand-ecommerce-data.onrender.com/${isCategorySelected ? `${products}` : ''}`, {
        cache:'no-cache',
   });
   
@@ -59,7 +59,7 @@ export const fetchProductsToServer = async (products:string)=>{
 export const fetchProductToServer = async (category:string,item:string)=>{
 
   const isCategorySelected = category === '' || !category ? false : true ;
-  const res = await fetch(`http://localhost:5000/${isCategorySelected ? `${category}/${item}` : ''}`, {
+  const res = await fetch(`https://brand-ecommerce-data.onrender.com/${isCategorySelected ? `${category}/${item}` : ''}`, {
     cache:'no-cache'
   });
   
