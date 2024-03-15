@@ -1,7 +1,5 @@
-import { CustomProductProps, FilterIncludesPropsProp, FilterProps, ProductProps, filterProductsListProps } from "@/types";
+import { FilterProps, ProductProps, filterProductsListProps } from "@/types";
 import { customStringIncludes } from ".";
-
-
 
 
 const filterProductsList = (filters:FilterProps[]|[], list:ProductProps[]|[] , checkValuesLength:number = 1) => {
@@ -11,9 +9,8 @@ const filterProductsList = (filters:FilterProps[]|[], list:ProductProps[]|[] , c
       if (!filters.length) {
             return list
       }else{
-
       
-      filters.forEach((filter:any) => {
+      filters.forEach((filter:FilterProps) => {
             
             switch (filter.type) {
                   case 'boolean': {
@@ -38,7 +35,7 @@ const filterProductsList = (filters:FilterProps[]|[], list:ProductProps[]|[] , c
                        break;
                    }
                   case 'minmax':{
-                        filterdList = filterdList.filter(product => filter.filterFn(product))
+                        filterdList = filterdList.filter(product => filter.filterFn(product,filter))
                   }
                   default:
                         break;

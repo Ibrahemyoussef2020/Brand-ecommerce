@@ -34,12 +34,10 @@ const FiltersSelected = ({filterSelectedList,filterRemove,setFilterRemove,setFil
       >
         {
           filterSelectedList
-            .filter((filter:any)=> filter.type !== 'remove-filter' && filter.type !== 'clear' && filter.prop !== 'price')
-            .map((filter:any)=> {
-              console.log(filter);
+            .filter((filter:FilterProps)=> filter.type !== 'remove-filter' && filter.type !== 'clear' && filter.prop !== 'price')
+            .map((filter:FilterProps)=> {
               
-            if (filter.hasOwnProperty('values') ) {
-              console.log(filter.prop);
+            if (filter.hasOwnProperty('values')  && filter.values.length) {
 
               const prop = filter.prop;
               
@@ -50,7 +48,6 @@ const FiltersSelected = ({filterSelectedList,filterRemove,setFilterRemove,setFil
                 >
                 <button onClick={_=> setFilterRemove({name:`${prop}`,value:f})}>
                   <span className="value">{typeof parseInt(f) === 'number' && parseInt(f) < 6 ? `${f} rate` : f}</span>
-
                   <span className="close">
                   <FontAwesomeIcon icon={faXmark} />
                   </span>
@@ -59,8 +56,6 @@ const FiltersSelected = ({filterSelectedList,filterRemove,setFilterRemove,setFil
               ))
             }
             else if (filter.hasOwnProperty('value')) {
-              console.log(filter.prop);
-              console.log(filter.value);
               
               return <SwiperSlide
               key={filter.value}

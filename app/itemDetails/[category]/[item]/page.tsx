@@ -20,7 +20,6 @@ type ParamsProps = {
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-
 const page = async ({params}:ParamsProps) => {
    const {category,item} = params;
    const product = await fetchProductToServer(category , item); 

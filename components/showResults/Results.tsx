@@ -24,6 +24,8 @@ const Results = ({products,category,maxCountProducts,handleFilter}:props) => {
           checked:true,
           type: 'clear',
           value: null,
+          values:[],
+         filterFn:(product:ProductProps,filter:FilterProps) => true,
         } , true)
       }
     

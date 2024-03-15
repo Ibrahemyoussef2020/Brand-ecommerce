@@ -59,7 +59,6 @@ const FilterSidebar = (props:FilterSidebarProps) => {
   const [selectedType,setSelectedType] = useState<string>('')
 
 
-
   const ref_premium_offer = useRef<HTMLInputElement[]>([]);
   const ref_free_delivery = useRef<HTMLInputElement[]>([])
   const ref_to_home = useRef<HTMLInputElement[]>([])
@@ -119,9 +118,10 @@ const FilterSidebar = (props:FilterSidebarProps) => {
     handleFilter({
       prop: 'price',
       value:'0',
+      values:[],
       checked: true,
       type: 'minmax',
-      filterFn:(item:any) => item.price > +minPriceValue && item.price < +maxPriceValue,
+      filterFn:(product:ProductProps,filter:FilterProps) => product.price > +minPriceValue && product.price < +maxPriceValue,
     }, true)
     
   }  
@@ -133,14 +133,16 @@ const FilterSidebar = (props:FilterSidebarProps) => {
   
     const handleBooleanValues = (e:React.ChangeEvent<HTMLInputElement>) => {
 
-      const {name} = e.target;
+      const prop = e.target.name;
 
       handleFilter({
-        prop: e.target.name,
+        prop: prop,
         checked: e.target.checked,
         value:e.target.value,
+        values:[],
         type: 'boolean',
-        filterFn:(product:any,filter:any) => product[name] === filter.checked
+        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
+        
       }, e.target.checked)
 
       setFiltersClear(false)
@@ -156,13 +158,15 @@ const FilterSidebar = (props:FilterSidebarProps) => {
         setSelectedType(e.target.value)
       }
 
+      const prop = e.target.name;
       
       handleFilter({
-        prop: e.target.name,
+        prop: prop,
         value: e.target.value,
+        values:[],
         checked: e.target.checked,
         type: 'custom',
-        filterFn: (item:StringProductProps) => item[e.target.name] === e.target.value,
+        filterFn: (product:ProductProps,filter:FilterProps) => product.prop === e.target.value,
       }, true)
 
       setFiltersClear(false)
@@ -183,14 +187,15 @@ const FilterSidebar = (props:FilterSidebarProps) => {
           
         }
 
+        const prop = e.target.name;
 
         handleFilter({
-          prop: e.target.name,
+          prop: prop,
           checked: e.target.checked,
           type: 'list',
           value:e.target.value,
           values: brandValues,
-          filterFn:(product:any,filter:any) => filter.values.includes(product[e.target.name]),
+          filterFn: (product:ProductProps,filter:FilterProps) => customStringIncludes(filter.values,filter.prop),
       } , e.target.checked)
 
       setFiltersClear(false)
@@ -206,13 +211,16 @@ const FilterSidebar = (props:FilterSidebarProps) => {
     else{
       ratingValues = ratingValues.filter((rate:string )=> rate !== e.target.value)
     }
+
+    const prop = e.target.name;
+
     handleFilter({
-      prop: e.target.name,
+      prop: prop,
       checked: e.target.checked,
       type: 'list',
       value:e.target.value,
       values: ratingValues,
-      filterFn:(product:any,filter:any) => filter.values.includes(product[e.target.name]),
+      filterFn:(product:ProductProps,filter:FilterProps) => customStringIncludes(filter.values,product.prop),
   } , e.target.checked)
 
   setFiltersClear(false)
@@ -237,13 +245,15 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
        ref_to_home.current.map((ref:HTMLInputElement )=> ref.checked = false)   
       }
 
+      const prop = filter.name
 
       handleFilter({
         prop:filter.name,
         checked:false,
         value:filter.value,
+        values:[],
         type: 'boolean',
-        filterFn:(product:any,custumFilter:any) => product[filter.name] === true
+        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
       }, false)
 
       setFiltersClear(false)
@@ -252,13 +262,16 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
   }
   else {
 
+    const prop = filter.name;
+
       if (filter.name === 'type' || filter.name === 'color') {
           handleFilter({
-            prop:filter.name,
+            prop:prop,
             value:filter.value,
+            values:[],
             checked:false,
             type: 'custom',
-            filterFn: (item:StringProductProps) => item[filter.name] === filter.value,
+            filterFn: (product:ProductProps,filter:FilterProps) => product.prop === filter.value,
           }, false)
       }
       else if (filter.name === 'brand'){
@@ -353,7 +366,9 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
       prop:filter,
       checked:true,
       type: 'remove-filter',
-      value:null,
+      value:'',
+      values:[],
+      filterFn: (product:ProductProps,filter:FilterProps) => true,
     } , true)
 
     setFiltersClear(false)
@@ -383,10 +398,12 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
       ratingValues = []
      
         handleFilter({
-          prop:null,
+          prop:'',
           checked:true,
           type: 'clear',
-          value: null,
+          value: '',
+          values:[],
+          filterFn: (product:ProductProps,filter:FilterProps) => true,
         } , false)
 
       }
@@ -563,7 +580,6 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
                   Free delivery
                 </span>
               </label>
-      
               <label>
                 <input
                   onChange={handleBooleanValues}

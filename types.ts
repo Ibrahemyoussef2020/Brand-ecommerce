@@ -28,14 +28,13 @@ export interface ProductProps {
 }
 
 
-
 export interface FilterProps{
-    prop?:null|string,
-    checked?:boolean,
-    type?: string,
-    value?: null | string,
-    values?:string[]|[],
-    filterFn?:(product:CustomProductProps,filter?:FilterProps)=> boolean,
+    prop:|'type'| 'brand' | 'premium_offer' | 'free_delivery' | 'to_home' | 'price' | 'color' | 'avgRating' | string,
+    checked:boolean,
+    type: string,
+    value: string,
+    values:string[]|[],
+    filterFn:(product:ProductProps,filter:FilterProps)=> boolean,
 }
 
 export interface FilterInputProps{
@@ -53,7 +52,6 @@ export interface FilterSidebarProps{
     setFiltersClear:((filter:boolean)=> void ),
     filterRemove:FilterInputProps,
     setFilterRemove:((filter:FilterInputProps)=> void),
-    filterFn?:any,
     filterSelectedList:[]|FilterProps[],
     setFilterSelectedList:(filter:[]|FilterProps[])=>void,
    
@@ -89,20 +87,4 @@ export interface filterProductsListProps {
     list:ProductProps[]|[];
     checkValuesLength:number
 }
-
-
-/******************** filter lsit utility fn *************** */
-
-export interface CustomProductProps {
-    [prop:string]:string
-}
-export interface FilterIncludesPropsProp{
-    checked:boolean,
-    filterFn:(product:CustomProductProps,filter?:FilterProps)=> boolean,
-    prop:string,
-    type:string,
-    values:[]|string[],
-}
-
-
 

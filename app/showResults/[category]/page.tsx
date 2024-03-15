@@ -5,7 +5,7 @@ import MenuSidebar from "@/components/layout/menu-sidebar"
 
 import {  showProducts } from "@/app/apis";
 import FilterSidebar from "@/components/showResults/FilterSidebar";
-import { FilterIncludesPropsProp, FilterInputProps, ProductProps } from "@/types";
+import { FilterInputProps, ProductProps } from "@/types";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -86,7 +86,7 @@ const page = () => {
 //__________  start handle filter ____________//
 
 
-const handleFilter = (filterData:FilterIncludesPropsProp, isAdded:boolean):boolean|void => {
+const handleFilter = (filterData:FilterProps, isAdded:boolean):boolean|void => {
     
     let newFilterList = filterList;
 
@@ -195,7 +195,7 @@ const handleFilter = (filterData:FilterIncludesPropsProp, isAdded:boolean):boole
           <div className={`${design} show-result`}>
 
             <FilterSidebar 
-                handleFilter={handleFilter as any}
+                handleFilter={handleFilter}
                 selectedValue={selectedValue}
                 constantList={constantProducts}
                 setProducts={setProducts}

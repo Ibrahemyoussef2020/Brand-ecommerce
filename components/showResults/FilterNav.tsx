@@ -25,13 +25,18 @@ const FilterNav = ({products,setProducts,category,sort,setSort,handleSortStrateg
         setProducts(items)
     }
 
+    
+
     const handleBooleanValues = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const prop = e.target.name;
+
       handleFilter({
-        prop: e.target.name,
+        prop: prop,
         checked: e.target.checked,
         value:e.target.value,
+        values:[],
         type: 'boolean',
-        filterFn:(product:any,filter:any) => product[e.target.name] === filter.checked
+        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
       }, e.target.checked)
 
       setFiltersClear(false)   
