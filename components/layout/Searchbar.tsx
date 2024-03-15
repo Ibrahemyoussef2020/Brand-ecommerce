@@ -31,7 +31,7 @@ const Searchbar = ({size = 'pc'}:prop) => {
   
     useEffect(()=>{    
       const fetchData = async ()=>{
-        const response =  await fetch('https://brand-ecommerce-data.onrender.com/consumer-sections');
+        const response =  await fetch(`https://brand-ecommerce-data.onrender.com/consumer-sections`);
         const data = await response.json();
         setSugsList(data)
       } 
