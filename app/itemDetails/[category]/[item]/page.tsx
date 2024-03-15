@@ -27,7 +27,7 @@ const page = async ({params}:ParamsProps) => {
 
   return (
     <>
-    <Header page='details' heading='' /> 
+    <Header page='details' heading='All products' /> 
     <MenuSidebar />
     <div className="product-details-page">
         <div className="container">

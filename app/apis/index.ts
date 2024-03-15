@@ -39,6 +39,9 @@ export const showProducts = async (products:string,setProducts:(product:[]|Produ
 
     })
     .then(data => setProducts(data));
+
+    console.log(process.env.NEXT_BUBLIC_URL);
+    
   
 }
 
@@ -52,7 +55,7 @@ export const fetchProductsToServer = async (products:string)=>{
     if (!res.ok) {
       throw new Error("Failed to fetch products");
     }
-    
+
       return res.json()
 }
 
@@ -67,10 +70,7 @@ export const fetchProductToServer = async (category:string,item:string)=>{
     throw new Error("Failed to fetch products");
   }
   
-
     return res.json()
 }
-
-
 
 

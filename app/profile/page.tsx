@@ -9,7 +9,7 @@ import ProfileInfo from "@/components/profile/profileInfo"
 const Profile = () => {
   return (
     <>
-      <Header page='details' heading='' /> 
+      <Header page='profile' heading='Profile info' /> 
       <MenuSidebar />
       <div className="profile">
       <div className="container">

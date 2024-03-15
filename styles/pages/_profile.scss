@@ -178,8 +178,6 @@
 }
 
 .profile{
-    margin-top: 20px;
-    
     .orders-wrapper{
         display: flex;
         align-items: flex-start;
@@ -196,7 +194,6 @@
     @include min-width($small_size){
         gap: 2px;
     }
-
 
     .img-wrapper{
         min-width: 90px;

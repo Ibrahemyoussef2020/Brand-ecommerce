@@ -15,7 +15,7 @@ import MenuSidebar from '@/components/layout/menu-sidebar';
 const Home = () => {
   return (
     <>
-    <Header page='home' heading='' /> 
+    <Header page='home' heading='Home' /> 
     <MenuSidebar />
 
     <CategoriesLinksSwipper />

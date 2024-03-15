@@ -4,8 +4,7 @@ import React from 'react'
 import NavBtn from './NavBtn'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useNavigate } from 'react-router-dom';
-
+import { useRouter } from "next/navigation"
 
 interface props {
     page:string,
@@ -13,10 +12,10 @@ interface props {
 }
 
 const HeaderTopLeft = ({page,heading = ''}:props) => {
-
+    const navigate = useRouter(); 
 
     const takeAstepBack = ()=>{
-        window.history.go(-1)
+        navigate.push('/')
     }
   return (
     <div className={`header-top-left ${page}`}>
@@ -38,7 +37,7 @@ const HeaderTopLeft = ({page,heading = ''}:props) => {
                 </Link>
             </div>
 
-            : page === 'results' || page === 'cart' || page === 'details' ?
+            : page === 'results' || page === 'cart' || page === 'details' || 'profile' ?
 
             <div className='flex'>
                 <Link href='/'>
@@ -77,7 +76,7 @@ const HeaderTopLeft = ({page,heading = ''}:props) => {
                         </picture>
                     </Link>
                 </div>
-                : page === 'results' || page === 'cart' ?
+                : page === 'results' || page === 'cart' || page === 'profile' ?
 
                 <div className='back-heading'>
                     <button className='back'  onClick={takeAstepBack}>

@@ -8,7 +8,7 @@ import OrderResult from "@/components/orders/OrderResult"
 const page = () => {
 
     return <>
-    <Header page='details' heading='' /> 
+    <Header page='details' heading='Item detailes' /> 
     <MenuSidebar />
     <div className="orders-page">
       <div className="container">
