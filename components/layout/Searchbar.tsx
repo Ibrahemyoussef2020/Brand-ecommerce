@@ -31,12 +31,16 @@ const Searchbar = ({size = 'pc'}:prop) => {
   
     useEffect(()=>{    
       const fetchData = async ()=>{
-        const response =  await fetch('http://localhost:5000/consumer-sections');
+        const response =  await fetch('https://brand-ecommerce-data.onrender.com/consumer-sections');
         const data = await response.json();
         setSugsList(data)
       } 
       fetchData()
     },[sug]) 
+
+
+    console.log(process.env.DATA_URL);
+    
 
 
     const handleSug  = (e:React.FormEvent<HTMLInputElement>)=>{
