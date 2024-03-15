@@ -36,7 +36,7 @@ const FilterNav = ({products,setProducts,category,sort,setSort,handleSortStrateg
         value:e.target.value,
         values:[],
         type: 'boolean',
-        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
+        filterFn:(product:ProductProps,filter:FilterProps) => product[prop as keyof  ProductProps]?.toString() === filter.checked.toString()
       }, e.target.checked)
 
       setFiltersClear(false)   

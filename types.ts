@@ -29,7 +29,7 @@ export interface ProductProps {
 
 
 export interface FilterProps{
-    prop:|'type'| 'brand' | 'premium_offer' | 'free_delivery' | 'to_home' | 'price' | 'color' | 'avgRating' | string,
+    prop:'type'| 'brand' | 'premium_offer' | 'free_delivery' | 'to_home' | 'price' | 'color' | 'avgRating' | string,
     checked:boolean,
     type: string,
     value: string,

@@ -19,7 +19,7 @@ const FiltersSelected = ({filterSelectedList,filterRemove,setFilterRemove,setFil
 
   return (
     <div className={`filter-selected-list ${filterSelectedList.length ? '' : 'empty-selected-list'}`}>
-      {filterSelectedList?.length ? <button onClick={handleClear} className="clear-selected-filters">
+      {filterSelectedList?.length ?  <button onClick={handleClear} className="clear-selected-filters">
         Clear all filter
       </button> : null}
       {filterSelectedList?.length ? <Swiper

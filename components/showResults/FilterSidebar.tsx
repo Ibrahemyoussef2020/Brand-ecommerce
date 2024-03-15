@@ -79,6 +79,7 @@ const FilterSidebar = (props:FilterSidebarProps) => {
     const types = new Set(constantList.map(product => product.type))
     setProductsType([...types])
 
+ console.log(types);
  
 
     const prices = constantList.map((product:ProductProps)=> product.price)
@@ -141,7 +142,7 @@ const FilterSidebar = (props:FilterSidebarProps) => {
         value:e.target.value,
         values:[],
         type: 'boolean',
-        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
+        filterFn:(product:ProductProps,filter:FilterProps) => product[prop as keyof  ProductProps]?.toString() === filter.checked.toString()
         
       }, e.target.checked)
 
@@ -158,15 +159,15 @@ const FilterSidebar = (props:FilterSidebarProps) => {
         setSelectedType(e.target.value)
       }
 
-      const prop = e.target.name;
-      
+      const prop = `${e.target.name}`;
+
       handleFilter({
         prop: prop,
         value: e.target.value,
         values:[],
         checked: e.target.checked,
         type: 'custom',
-        filterFn: (product:ProductProps,filter:FilterProps) => product.prop === e.target.value,
+        filterFn: (product:ProductProps,filter:FilterProps) => product[prop as keyof  ProductProps] === e.target.value,
       }, true)
 
       setFiltersClear(false)
@@ -195,7 +196,7 @@ const FilterSidebar = (props:FilterSidebarProps) => {
           type: 'list',
           value:e.target.value,
           values: brandValues,
-          filterFn: (product:ProductProps,filter:FilterProps) => customStringIncludes(filter.values,filter.prop),
+          filterFn: (product:ProductProps,filter:FilterProps) => customStringIncludes(filter.values,product.prop),
       } , e.target.checked)
 
       setFiltersClear(false)
@@ -253,7 +254,7 @@ const handleUnCheckInput = (filter:FilterInputProps)=>{
         value:filter.value,
         values:[],
         type: 'boolean',
-        filterFn:(product:ProductProps,filter:FilterProps) => product.prop.toString() === filter.checked.toString()
+        filterFn:(product:ProductProps,filter:FilterProps) => product[prop as keyof  ProductProps]?.toString() === filter.checked.toString()
       }, false)
 
       setFiltersClear(false)
