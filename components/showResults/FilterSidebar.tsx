@@ -79,9 +79,6 @@ const FilterSidebar = (props:FilterSidebarProps) => {
     const types = new Set(constantList.map(product => product.type))
     setProductsType([...types])
 
- console.log(types);
- 
-
     const prices = constantList.map((product:ProductProps)=> product.price)
 
     const minPrice = Math.floor(Math.min(...prices));
@@ -103,7 +100,6 @@ const FilterSidebar = (props:FilterSidebarProps) => {
 
   //________________ price _______________________//
 
-  console.log(productsColor);
 
   const handleMinMaxPrice = (e:React.ChangeEvent<HTMLInputElement>,minMax:string)=>{
     

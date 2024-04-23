@@ -14,6 +14,7 @@ import ToggleFav from "../general/ToggleFav"
 import { useState } from "react"
 import { customStringIncludes } from "@/utilities"
 import { IRootState } from "@/redux/store"
+import EmptyCart from "./EmptyCart"
 
 const CartSmall = () => {
   const [moreList ,setMoreList] = useState<string[]|[]>([])
@@ -48,7 +49,9 @@ const toggleMoreButtons = (id:string)=>{
   return (
     <div className="small-cart">
       <div className="container">
-      <div className="cart-body">{                 
+      <div className="cart-body">{    
+      
+      products.length?
               products?.map((product:ProductProps) => {
                   const details = `${product.title} ${product.description}`
 
@@ -108,6 +111,8 @@ const toggleMoreButtons = (id:string)=>{
                       </div>
                   </article>
               })
+
+      : <EmptyCart />        
           }
         </div>
         <div className="buy-card">

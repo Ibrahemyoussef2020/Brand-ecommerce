@@ -39,11 +39,6 @@ const sortLists = ({filter,products}:sortProps) => {
         list =  products.sort((a:ProductProps,b:ProductProps) => a['avgRating'] - b['avgRating'])
     }
 
-    console.log(filter);
-    console.log(list);
-    
-    
-
     return list
 }
 

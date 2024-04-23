@@ -10,6 +10,7 @@ import SavedForLater from "../general/SavedForLater"
 import PaymentFeatures from "../general/PaymentFeatures"
 import { IRootState } from "@/redux/store"
 import React from "react"
+import EmptyCart from "./EmptyCart"
 
 const CartLarge = () => {
     
@@ -38,9 +39,8 @@ const CartLarge = () => {
     dispatch(removeFromCart(product.id))
   }
 
-  console.log(products);
   
-  
+
   return (
     <div className="large-cart">
         <div className="container container--heading">
@@ -51,6 +51,7 @@ const CartLarge = () => {
             <div className="cart-discount">
                 <div className="cart-body">
                 {
+                    products.length ?
                     
                     products?.map((product:ProductProps) => {
                         const details = `${product.title} ${product.description}`
@@ -111,6 +112,8 @@ const CartLarge = () => {
                             </div>
                         </article>
                     })
+
+                    : <EmptyCart />
                     
                 }
                    <div className="body-footer">

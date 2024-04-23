@@ -38,11 +38,6 @@ const Searchbar = ({size = 'pc'}:prop) => {
       fetchData()
     },[sug]) 
 
-
-    console.log(process.env.DATA_URL);
-    
-
-
     const handleSug  = (e:React.FormEvent<HTMLInputElement>)=>{
         const {value} = e.currentTarget;
         if (value === '') {
@@ -68,7 +63,6 @@ const Searchbar = ({size = 'pc'}:prop) => {
 
   const handleDrop = ()=>{
     setCloseClass('visible');
-    console.log('drop' , sugList);
     dispatch(toggleSuggegtionsDrop(sugList))  
   }
 

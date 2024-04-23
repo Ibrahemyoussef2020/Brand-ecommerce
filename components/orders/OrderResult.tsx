@@ -13,6 +13,7 @@ import ProductRating from "@/components/general/ProductRating";
 import { selectDate } from "@/utilities";
 import DetailsMayLik from "@/components/details/DetailsMayLik";
 import { IRootState } from "@/redux/store";
+import EmptyCart from "../cart/EmptyCart";
 
 const OrderResult = () => {
 
@@ -23,6 +24,7 @@ const OrderResult = () => {
 
   return  <div className="order-results">
         {
+          purchases.length ?
             purchases?.map((product:ProductProps,index:number) => {
                     return <article key={product.id}>
                     <div className="img-wrapper">
@@ -89,6 +91,8 @@ const OrderResult = () => {
                 </article>
                 
             }) 
+
+            : <EmptyCart />
         }
   </div>
 }

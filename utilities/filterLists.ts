@@ -14,15 +14,12 @@ const filterProductsList = (filters:FilterProps[]|[], list:ProductProps[]|[] , c
             
             switch (filter.type) {
                   case 'boolean': {
-
-                        console.log(filter.prop);
                         
                         //filterdList = filterdList.filter(item => item[filter.prop] === filter.checkd)
                         filterdList = filterdList.filter(product => filter.filterFn(product,filter))
                         break;
                   }
                   case 'list': { 
-                        console.log(filter.values);
                         
                        filterdList = filterdList.filter((item:any) => customStringIncludes(filter.values,`${item[filter.prop]}`) ) 
                        ;

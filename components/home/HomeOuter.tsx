@@ -6,7 +6,6 @@ import BothHomeElectricSwiper from './BothHomeElectricSwiper'
 const HomeOuter = () => {
   return (
     <section className='outer-electric'>
-        <div className='kkkkkkkk'>{process.env.DATA_URL}</div> 
         <div className='intro'>
             <div className='external-heading'>
                 <h2>Home and outdoor</h2>
