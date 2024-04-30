@@ -35,9 +35,6 @@ export const showProducts = async (products:string,setProducts:(product:[]|Produ
 
     })
     .then(data => setProducts(data));
-
-    console.log(process.env.NEXT_BUBLIC_URL);
-    
   
 }
 
