@@ -39,7 +39,6 @@ const CartLarge = () => {
     dispatch(removeFromCart(product.id))
   }
 
-  
 
   return (
     <div className="large-cart">

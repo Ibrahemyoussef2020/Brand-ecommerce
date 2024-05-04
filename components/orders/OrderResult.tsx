@@ -19,10 +19,15 @@ const OrderResult = () => {
 
   const dispatch = useDispatch()
   const {purchases} = useSelector((state:IRootState) => state.combine.cart)
+  const {products} = useSelector((state:IRootState) => state.combine.cart)
   const router = useRouter()
 
 
+  
+
   return  <div className="order-results">
+
+            <h2 className="old-purchases__heading">Your Old Purchases</h2>
         {
           purchases.length ?
             purchases?.map((product:ProductProps,index:number) => {
