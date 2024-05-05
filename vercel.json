@@ -5,7 +5,7 @@
             "dest":"/"
         },
         {
-            "src":"/cart",
+            "src":"cart",
             "dest":"/"
         },
         {
@@ -13,15 +13,15 @@
             "dest":"/"
         },
         {
-            "src":"/orders",
+            "src":"orders",
             "dest":"/"
         },
         {
-            "src":"/profile",
+            "src":"profile",
             "dest":"/"
         },
         {
-            "src":"/saved",
+            "src":"saved",
             "dest":"/"
         },
         {
