@@ -14,7 +14,6 @@ export const fetchProduct = async (
         if (!res.ok) {
           throw new Error("Failed to fetch products");
         }
-
         return res.json();
       })
       .then(data => setProduct(data));
